@@ -1,0 +1,137 @@
+{
+  "version": "1.0.0-beta.4",
+  "id": "@shopgate-project/ext-custom-delivery-time",
+  "trusted": false,
+  "components": [
+    {
+      "id": "DeliveryTime",
+      "path": "frontend/portals/DeliveryTime/index.jsx",
+      "target": "product.availability",
+      "type": "portals"
+    }
+  ],
+  "configuration": {
+    "mode": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": "static",
+      "params": {
+        "type": "select",
+        "label": "Source of the replacement text",
+        "description": "'static' uses the text configured below. 'property' uses the value of the product property configured below.",
+        "required": true,
+        "options": {
+          "multiple": false,
+          "options": [
+            {
+              "label": "Static text",
+              "value": "static"
+            },
+            {
+              "label": "Value of a property",
+              "value": "property"
+            }
+          ]
+        }
+      }
+    },
+    "text": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "text",
+        "label": "Static text",
+        "description": "The text that replaces the delivery time. Only relevant when the source is set to 'static'.",
+        "required": false,
+        "options": {
+          "placeholder": "Delivered within 2-3 business days"
+        }
+      }
+    },
+    "property": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "text",
+        "label": "Property for the text",
+        "description": "Label of the product property whose value is shown as delivery time. Only relevant when the source is set to 'property'. When the property is missing or empty on a product, the original text is kept.",
+        "required": false,
+        "options": {
+          "placeholder": "Delivery time"
+        }
+      }
+    },
+    "conditionMode": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": "always",
+      "params": {
+        "type": "select",
+        "label": "When to replace",
+        "description": "'always' replaces the text on every product. 'ifSet' only replaces it when the property configured below is set. 'unlessSet' replaces it on every product except those where that property is set.",
+        "required": true,
+        "options": {
+          "multiple": false,
+          "options": [
+            {
+              "label": "Always",
+              "value": "always"
+            },
+            {
+              "label": "Only when property is set",
+              "value": "ifSet"
+            },
+            {
+              "label": "Always except when property is set",
+              "value": "unlessSet"
+            }
+          ]
+        }
+      }
+    },
+    "conditionProperty": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "text",
+        "label": "Property for the condition",
+        "description": "Label of the product property that decides whether the text is replaced. Only relevant for 'ifSet' and 'unlessSet'.",
+        "required": false,
+        "options": {
+          "placeholder": "Preorder"
+        }
+      }
+    },
+    "conditionValues": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "text",
+        "label": "Values for the condition",
+        "description": "Optional comma separated list. When filled, the property only counts as set if its value matches one of these entries. When empty, the property counts as set as soon as it exists on the product and has a non empty value.",
+        "required": false,
+        "options": {
+          "placeholder": "yes,true,1"
+        }
+      }
+    },
+    "fallbackProperty": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "text",
+        "label": "Property for the excluded products",
+        "description": "Label of the product property whose value is shown on the products the condition excludes from the replacement. Only relevant for 'ifSet' and 'unlessSet'. When empty, or when the property is missing on a product, the original text is kept. This field alone does not activate the extension - the static text or the property above has to be filled as well.",
+        "required": false,
+        "options": {
+          "placeholder": "deliveryTime"
+        }
+      }
+    }
+  }
+}
