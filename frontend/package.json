@@ -1,6 +1,6 @@
 {
-  "name": "@shopgate-project/ext-custom-delivery-time",
-  "version": "1.0.0-beta.4",
+  "name": "@shopgate-project/custom-delivery-time",
+  "version": "1.0.0",
   "description": "Makes the delivery time text on the product detail page configurable.",
   "license": "Apache-2.0",
   "scripts": {

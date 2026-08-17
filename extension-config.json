@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0-beta.4",
-  "id": "@shopgate-project/ext-custom-delivery-time",
+  "version": "1.0.0",
+  "id": "@shopgate-project/custom-delivery-time",
   "trusted": false,
   "components": [
     {

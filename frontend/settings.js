@@ -1,6 +1,5 @@
 // Resolved values from the generated frontend/config.json (destination: frontend). The file is
 // written by the SDK per environment and therefore not part of the repository.
-// eslint-disable-next-line import/no-unresolved
 import config from './config.json';
 import {
   MODE_STATIC,
